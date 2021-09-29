@@ -16,7 +16,7 @@ function GetFilesInfos() {
         
         Do {
             $Count++
-            Write-Progress -Activity "Scanning files" -Status "Running..." -PercentComplete $($count * 10) -CurrentOperation "processing ... $($count)"
+            Write-Progress -Activity "Scanning files" -Status "Running..." -PercentComplete $($count*10) -CurrentOperation "processing ... $($count)"
             Start-Sleep -Seconds 1
         }until($count -eq $Measure.count)
         $count = $null
@@ -24,7 +24,7 @@ function GetFilesInfos() {
         [pscustomobject]@{
             ComputerName = $env:Computername 
             Files        = $Measure.Count
-            HiddenFiles  = $($hidden.Count - $Measure.Count)
+            HiddenFiles  = $hidden.Count
             AverageSize  = $Measure.Average 
             SizesinGB    = $Measure.Sum /1GB
             Date         = Get-Date
